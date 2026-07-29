@@ -1,12 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap");
+@import url("https://fonts.bunny.net/css?family=lexend:300,400,500,600,700");
+
+:root {
+	--bg-1: #030711;
+	--bg-2: #071229;
+	--bg-3: #0a1128;
+	--bg-4: #050a16;
+	--bg-5: #0c1c38;
+	--sky: #7dd3fc;
+	--sky-soft: #4fb3e8;
+	--sky-dim: #a9dffb;
+	--sky-faint: #26558a;
+	--line: #1c3a5e;
+	--danger: #fca5a5;
+}
 
 body {
-	font-family: "Roboto", Arial, Helvetica, sans-serif;
+	font-family: "Lexend", Arial, Helvetica, sans-serif;
 	margin: 0;
-	background: #111;
+	background: linear-gradient(120deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-4), var(--bg-5));
+	background-size: 400% 400%;
+	animation: drift 24s ease-in-out infinite;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	color: var(--sky-dim);
+}
+
+@keyframes drift {
+	0%   { background-position: 0% 50%; }
+	50%  { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+#particles {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+}
+
+body > *:not(#particles) {
+	position: relative;
+	z-index: 1;
 }
 
 .flex-center {
@@ -31,17 +65,17 @@ body {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: #111;
+	background-color: var(--bg-3);
 }
 
 #sj-error {
-	color: #ff6666 !important;
+	color: var(--danger) !important;
 	white-space: pre-wrap;
 }
 
 #sj-error-code {
 	font-size: 12px;
-	color: #fff;
+	color: var(--sky-dim);
 	font-family: "Courier New", Courier, monospace;
 }
 
@@ -51,11 +85,13 @@ body {
 
 .logo-wrapper .text {
 	font-size: 75px;
-	color: #fff;
+	color: var(--sky);
 }
 
 .logo-wrapper h1 {
-	color: white;
+	color: var(--sky);
+	font-weight: 700;
+	letter-spacing: 0.02em;
 }
 
 footer {
@@ -79,7 +115,7 @@ footer a,
 footer span {
 	margin: 0 15px;
 	text-decoration: none;
-	color: #fff;
+	color: var(--sky-dim);
 	font-size: 15px;
 }
 
@@ -89,11 +125,13 @@ footer a {
 
 footer a:hover {
 	text-decoration: underline;
+	color: var(--sky);
 }
 
 .desc p {
 	width: 560px;
-	color: rgba(253, 253, 253, 0.514);
+	max-width: 100%;
+	color: rgba(169, 223, 251, 0.7);
 }
 
 #sj-address {
@@ -101,19 +139,22 @@ footer a:hover {
 	font-family: inherit;
 	padding: 0px 17px;
 	height: 48px;
-	border: 1px solid rgb(255, 255, 255, 0.2);
-	color: var(--text-color);
+	border: 1px solid var(--line);
+	color: var(--sky-dim);
 	border-radius: 3px;
 	outline: none;
 	width: 350px;
 	margin-top: 5px;
 	border-radius: 50px;
-	color: #fff;
-	transition: border-radius 0.1s;
+	transition: border-radius 0.1s, border-color 0.15s;
+}
+
+#sj-address::placeholder {
+	color: rgba(169, 223, 251, 0.45);
 }
 
 #sj-address:focus {
-	border: 1px solid rgba(253, 253, 253, 0.514);
+	border: 1px solid var(--sky-soft);
 	border-radius: 6px;
 }
 
@@ -121,8 +162,8 @@ footer a:hover {
 	border-radius: 10px;
 	padding: 10px;
 	display: block;
-	border: #fff 1px solid;
-	color: #fff;
+	border: var(--line) 1px solid;
+	color: var(--sky-dim);
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 15px;
@@ -135,7 +176,7 @@ footer a:hover {
 
 .credit a,
 .credit label {
-	color: white;
+	color: var(--sky);
 	text-decoration: underline;
 	text-align: right;
 }
